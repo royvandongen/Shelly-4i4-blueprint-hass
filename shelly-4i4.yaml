@@ -99,202 +99,85 @@ blueprint:
 mode: restart
 max_exceeded: silent
 
+variables:
+  button_device: !input button
+
 trigger:
   - platform: event
     event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "001"
-      value: 0
-    id: btn1_press
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "001"
-      value: 1
-    id: btn1_release
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "001"
-      value: 2
-    id: btn1_long
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "001"
-      value: 3
-    id: btn1_double
 
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "002"
-      value: 0
-    id: btn2_press
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "002"
-      value: 1
-    id: btn2_release
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "002"
-      value: 2
-    id: btn2_long
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "002"
-      value: 3
-    id: btn2_double
-
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "003"
-      value: 0
-    id: btn3_press
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "003"
-      value: 1
-    id: btn3_release
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "003"
-      value: 2
-    id: btn3_long
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "003"
-      value: 3
-    id: btn3_double
-
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "004"
-      value: 0
-    id: btn4_press
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "004"
-      value: 1
-    id: btn4_release
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "004"
-      value: 2
-    id: btn4_long
-  - platform: event
-    event_type: zwave_js_value_notification
-    event_data:
-      device_id: !input button
-      command_class_name: Central Scene
-      property_key_name: "004"
-      value: 3
-    id: btn4_double
+condition:
+  - condition: template
+    value_template: >
+      {{ trigger.event.data.device_id == button_device and
+         trigger.event.data.command_class_name == 'Central Scene' }}
 
 action:
   - choose:
     - conditions:
-        - condition: trigger
-          id: btn1_press
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
       sequence: !input pressb1
     - conditions:
-        - condition: trigger
-          id: btn1_release
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
       sequence: !input releaseb1
     - conditions:
-        - condition: trigger
-          id: btn1_double
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
       sequence: !input doubleb1
     - conditions:
-        - condition: trigger
-          id: btn1_long
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
       sequence: !input longb1
+
     - conditions:
-        - condition: trigger
-          id: btn2_press
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
       sequence: !input pressb2
     - conditions:
-        - condition: trigger
-          id: btn2_release
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
       sequence: !input releaseb2
     - conditions:
-        - condition: trigger
-          id: btn2_double
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
       sequence: !input doubleb2
     - conditions:
-        - condition: trigger
-          id: btn2_long
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
       sequence: !input longb2
+
     - conditions:
-        - condition: trigger
-          id: btn3_press
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
       sequence: !input pressb3
     - conditions:
-        - condition: trigger
-          id: btn3_release
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
       sequence: !input releaseb3
     - conditions:
-        - condition: trigger
-          id: btn3_double
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
       sequence: !input doubleb3
     - conditions:
-        - condition: trigger
-          id: btn3_long
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
       sequence: !input longb3
+
     - conditions:
-        - condition: trigger
-          id: btn4_press
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
       sequence: !input pressb4
     - conditions:
-        - condition: trigger
-          id: btn4_release
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
       sequence: !input releaseb4
     - conditions:
-        - condition: trigger
-          id: btn4_double
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
       sequence: !input doubleb4
     - conditions:
-        - condition: trigger
-          id: btn4_long
+        - condition: template
+          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
       sequence: !input longb4
