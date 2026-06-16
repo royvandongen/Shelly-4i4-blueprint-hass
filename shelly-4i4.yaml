@@ -8,9 +8,11 @@ blueprint:
       description: Choose Shelly i4
       selector:
         device:
-          integration: zwave_js
-          manufacturer: Shelly Europe Ltd.
-          model: Wave I4
+          filter:
+            - manufacturer: Shelly
+              model: SNSN-0024X
+            - manufacturer: Shelly Europe Ltd.
+              model: QNSN-0A24X
           multiple: false
     downb1:
       name: Down Button 1
