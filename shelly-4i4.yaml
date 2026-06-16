@@ -103,7 +103,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "001"
     command_class: 91
@@ -113,7 +113,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "001"
     command_class: 91
@@ -123,7 +123,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "001"
     command_class: 91
@@ -133,7 +133,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "001"
     command_class: 91
@@ -144,7 +144,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "002"
     command_class: 91
@@ -154,7 +154,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "002"
     command_class: 91
@@ -164,7 +164,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "002"
     command_class: 91
@@ -174,7 +174,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "002"
     command_class: 91
@@ -185,7 +185,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "003"
     command_class: 91
@@ -195,7 +195,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "003"
     command_class: 91
@@ -205,7 +205,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "003"
     command_class: 91
@@ -215,7 +215,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "003"
     command_class: 91
@@ -226,7 +226,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "004"
     command_class: 91
@@ -236,7 +236,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "004"
     command_class: 91
@@ -246,7 +246,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "004"
     command_class: 91
@@ -256,7 +256,7 @@ trigger:
   - platform: device
     domain: zwave_js
     device_id: !input button
-    type: zwave_js.value_notification.Central_Scene
+    type: event.value_notification.central_scene
     property: scene
     property_key: "004"
     command_class: 91
