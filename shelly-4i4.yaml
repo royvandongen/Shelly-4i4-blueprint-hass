@@ -5,7 +5,7 @@ blueprint:
   input:
     button:
       name: Device
-      description: Choose your Shelly Wave I4
+      description: Choose your Shelly Wave I4 Z-Wave device
       selector:
         device:
           manufacturer: Shelly Europe Ltd.
