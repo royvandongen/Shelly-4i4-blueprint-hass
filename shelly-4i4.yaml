@@ -1,351 +1,332 @@
 blueprint:
-  name: Shelly i4 4 Buttons actions
-  description: This blueprint is for the Shelly i4 setup as button. It is for general use.
+  name: Shelly Wave I4 (Z-Wave) 4 Button Actions
+  description: For the Shelly Wave I4 (QNSN-0A24X) connected via Z-Wave JS.
   domain: automation
   input:
     button:
-      name: button
-      description: Choose Shelly i4
+      name: Device
+      description: Choose your Shelly Wave I4
       selector:
         device:
-          filter:
-            - manufacturer: Shelly
-              model: SNSN-0024X
-            - manufacturer: Shelly Europe Ltd.
-              model: QNSN-0A24X
+          manufacturer: Shelly Europe Ltd.
+          model: QNSN-0A24X
           multiple: false
-    downb1:
-      name: Down Button 1
-      description: Action to run when SHORT press
+
+    pressb1:
+      name: Button 1 - Single Press
       default: []
       selector:
         action: {}
-    upb1:
-      name: up Button 1
-      description: Action to run when SHORT press
-      default: []
-      selector:
-        action: {}
-    singleb1:
-      name: single short press Button 1
-      description: Action to run when SHORT press
+    releaseb1:
+      name: Button 1 - Released
       default: []
       selector:
         action: {}
     doubleb1:
-      name: double short press Button 1
-      description: Action to run when DOUBLE SHORT press
+      name: Button 1 - Double Press
       default: []
       selector:
         action: {}
     longb1:
-      name: long press Button 1
-      description: Action to run when LONG press
+      name: Button 1 - Held Down
       default: []
       selector:
         action: {}
-        
-    downb2:
-      name: Down Button 2
-      description: Action to run when SHORT press
+
+    pressb2:
+      name: Button 2 - Single Press
       default: []
       selector:
         action: {}
-    upb2:
-      name: up Button 2
-      description: Action to run when SHORT press
-      default: []
-      selector:
-        action: {}
-    singleb2:
-      name: single short press Button 2
-      description: Action to run when SHORT press
+    releaseb2:
+      name: Button 2 - Released
       default: []
       selector:
         action: {}
     doubleb2:
-      name: double short press Button 2
-      description: Action to run when DOUBLE SHORT press
+      name: Button 2 - Double Press
       default: []
       selector:
         action: {}
     longb2:
-      name: long press Button 2
-      description: Action to run when LONG press
+      name: Button 2 - Held Down
       default: []
       selector:
         action: {}
-        
-    downb3:
-      name: Down Button 3
-      description: Action to run when SHORT press
+
+    pressb3:
+      name: Button 3 - Single Press
       default: []
       selector:
         action: {}
-    upb3:
-      name: up Button 3
-      description: Action to run when SHORT press
-      default: []
-      selector:
-        action: {}
-    singleb3:
-      name: single short press Button 3
-      description: Action to run when SHORT press
+    releaseb3:
+      name: Button 3 - Released
       default: []
       selector:
         action: {}
     doubleb3:
-      name: double short press Button 3
-      description: Action to run when DOUBLE SHORT press
+      name: Button 3 - Double Press
       default: []
       selector:
         action: {}
     longb3:
-      name: long press Button 3
-      description: Action to run when LONG press
+      name: Button 3 - Held Down
       default: []
       selector:
         action: {}
-        
-    downb4:
-      name: Down Button 4
-      description: Action to run when SHORT press
+
+    pressb4:
+      name: Button 4 - Single Press
       default: []
       selector:
         action: {}
-    upb4:
-      name: up Button 4
-      description: Action to run when SHORT press
-      default: []
-      selector:
-        action: {}
-    singleb4:
-      name: single short press Button 4
-      description: Action to run when SHORT press
+    releaseb4:
+      name: Button 4 - Released
       default: []
       selector:
         action: {}
     doubleb4:
-      name: double short press Button 4
-      description: Action to run when DOUBLE SHORT press
+      name: Button 4 - Double Press
       default: []
       selector:
         action: {}
     longb4:
-      name: long press Button 4
-      description: Action to run when LONG press
+      name: Button 4 - Held Down
       default: []
       selector:
         action: {}
-  source_url: https://community.home-assistant.io/t/shelly-i4-4-buttons-actions/514527
+
 mode: restart
 max_exceeded: silent
+
 trigger:
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_down
-  subtype: button1
-  id: btn1_down
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_up
-  subtype: button1
-  id: btn1_up
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: single_push
-  subtype: button1
-  id: btn1_single
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: double_push
-  subtype: button1
-  id: btn1_double
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: long_push
-  subtype: button1
-  id: btn1_long
-  
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_down
-  subtype: button2
-  id: btn2_down
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_up
-  subtype: button2
-  id: btn2_up
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: single_push
-  subtype: button2
-  id: btn2_single
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: double_push
-  subtype: button2
-  id: btn2_double
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: long_push
-  subtype: button2
-  id: btn2_long
-  
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_down
-  subtype: button3
-  id: btn3_down
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_up
-  subtype: button3
-  id: btn3_up
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: single_push
-  subtype: button3
-  id: btn3_single
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: double_push
-  subtype: button3
-  id: btn3_double
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: long_push
-  subtype: button3
-  id: btn3_long
-  
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_down
-  subtype: button4
-  id: btn4_down
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: btn_up
-  subtype: button4
-  id: btn4_up
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: single_push
-  subtype: button4
-  id: btn4_single
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: double_push
-  subtype: button4
-  id: btn4_double
-- platform: device
-  device_id: !input  button
-  domain: shelly
-  type: long_push
-  subtype: button4
-  id: btn4_long
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "001"
+    command_class: 91
+    endpoint: 0
+    value: "0"
+    id: btn1_press
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "001"
+    command_class: 91
+    endpoint: 0
+    value: "1"
+    id: btn1_release
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "001"
+    command_class: 91
+    endpoint: 0
+    value: "2"
+    id: btn1_long
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "001"
+    command_class: 91
+    endpoint: 0
+    value: "3"
+    id: btn1_double
+
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "002"
+    command_class: 91
+    endpoint: 0
+    value: "0"
+    id: btn2_press
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "002"
+    command_class: 91
+    endpoint: 0
+    value: "1"
+    id: btn2_release
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "002"
+    command_class: 91
+    endpoint: 0
+    value: "2"
+    id: btn2_long
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "002"
+    command_class: 91
+    endpoint: 0
+    value: "3"
+    id: btn2_double
+
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "003"
+    command_class: 91
+    endpoint: 0
+    value: "0"
+    id: btn3_press
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "003"
+    command_class: 91
+    endpoint: 0
+    value: "1"
+    id: btn3_release
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "003"
+    command_class: 91
+    endpoint: 0
+    value: "2"
+    id: btn3_long
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "003"
+    command_class: 91
+    endpoint: 0
+    value: "3"
+    id: btn3_double
+
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "004"
+    command_class: 91
+    endpoint: 0
+    value: "0"
+    id: btn4_press
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "004"
+    command_class: 91
+    endpoint: 0
+    value: "1"
+    id: btn4_release
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "004"
+    command_class: 91
+    endpoint: 0
+    value: "2"
+    id: btn4_long
+  - platform: device
+    domain: zwave_js
+    device_id: !input button
+    type: zwave_js.value_notification.Central_Scene
+    property: scene
+    property_key: "004"
+    command_class: 91
+    endpoint: 0
+    value: "3"
+    id: btn4_double
+
 action:
-- choose:
-  - conditions:
-    - condition: trigger
-      id: btn1_down
-    sequence: !input downb1
-  - conditions:
-    - condition: trigger
-      id: btn1_up
-    sequence: !input upb1
-  - conditions:
-    - condition: trigger
-      id: btn1_single
-    sequence: !input singleb1
-  - conditions:
-    - condition: trigger
-      id: btn1_double
-    sequence: !input doubleb1
-  - conditions:
-    - condition: trigger
-      id: btn1_long
-    sequence: !input longb1
-
-  - conditions:
-    - condition: trigger
-      id: btn2_down
-    sequence: !input downb2
-  - conditions:
-    - condition: trigger
-      id: btn2_up
-    sequence: !input upb2
-  - conditions:
-    - condition: trigger
-      id: btn2_single
-    sequence: !input singleb2
-  - conditions:
-    - condition: trigger
-      id: btn2_double
-    sequence: !input doubleb2
-  - conditions:
-    - condition: trigger
-      id: btn2_long
-    sequence: !input longb2
-
-  - conditions:  
-    - condition: trigger
-      id: btn3_down
-    sequence: !input downb3
-  - conditions:
-    - condition: trigger
-      id: btn3_up
-    sequence: !input upb3
-  - conditions:
-    - condition: trigger
-      id: btn3_single
-    sequence: !input singleb3
-  - conditions:
-    - condition: trigger
-      id: btn3_double
-    sequence: !input doubleb3
-  - conditions:
-    - condition: trigger
-      id: btn3_long
-    sequence: !input longb3
-
-  - conditions:
-    - condition: trigger
-      id: btn4_down
-    sequence: !input downb4
-  - conditions:
-    - condition: trigger
-      id: btn4_up
-    sequence: !input upb4
-  - conditions:
-    - condition: trigger
-      id: btn4_single
-    sequence: !input singleb4
-  - conditions:
-    - condition: trigger
-      id: btn4_double
-    sequence: !input doubleb4
-  - conditions:
-    - condition: trigger
-      id: btn4_long
-    sequence: !input longb4
+  - choose:
+    - conditions:
+        - condition: trigger
+          id: btn1_press
+      sequence: !input pressb1
+    - conditions:
+        - condition: trigger
+          id: btn1_release
+      sequence: !input releaseb1
+    - conditions:
+        - condition: trigger
+          id: btn1_double
+      sequence: !input doubleb1
+    - conditions:
+        - condition: trigger
+          id: btn1_long
+      sequence: !input longb1
+    - conditions:
+        - condition: trigger
+          id: btn2_press
+      sequence: !input pressb2
+    - conditions:
+        - condition: trigger
+          id: btn2_release
+      sequence: !input releaseb2
+    - conditions:
+        - condition: trigger
+          id: btn2_double
+      sequence: !input doubleb2
+    - conditions:
+        - condition: trigger
+          id: btn2_long
+      sequence: !input longb2
+    - conditions:
+        - condition: trigger
+          id: btn3_press
+      sequence: !input pressb3
+    - conditions:
+        - condition: trigger
+          id: btn3_release
+      sequence: !input releaseb3
+    - conditions:
+        - condition: trigger
+          id: btn3_double
+      sequence: !input doubleb3
+    - conditions:
+        - condition: trigger
+          id: btn3_long
+      sequence: !input longb3
+    - conditions:
+        - condition: trigger
+          id: btn4_press
+      sequence: !input pressb4
+    - conditions:
+        - condition: trigger
+          id: btn4_release
+      sequence: !input releaseb4
+    - conditions:
+        - condition: trigger
+          id: btn4_double
+      sequence: !input doubleb4
+    - conditions:
+        - condition: trigger
+          id: btn4_long
+      sequence: !input longb4
