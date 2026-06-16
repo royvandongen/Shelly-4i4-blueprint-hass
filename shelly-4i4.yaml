@@ -1,16 +1,36 @@
 blueprint:
   name: Shelly Wave I4 (Z-Wave) 4 Button Actions
-  description: For the Shelly Wave I4 (QNSN-0A24X) connected via Z-Wave JS.
+  description: For the Shelly Wave I4 (QNSN-0A24X) connected via Z-Wave JS. Select the 4 Scene event entities for your device.
   domain: automation
   input:
-    button:
-      name: Device
-      description: Choose your Shelly Wave I4 Z-Wave device
+    scene1:
+      name: Button 1 entity
+      description: "Select the Scene 001 event entity for your device"
       selector:
-        device:
-          manufacturer: Shelly Europe Ltd.
-          model: QNSN-0A24X
-          multiple: false
+        entity:
+          domain: event
+          integration: zwave_js
+    scene2:
+      name: Button 2 entity
+      description: "Select the Scene 002 event entity for your device"
+      selector:
+        entity:
+          domain: event
+          integration: zwave_js
+    scene3:
+      name: Button 3 entity
+      description: "Select the Scene 003 event entity for your device"
+      selector:
+        entity:
+          domain: event
+          integration: zwave_js
+    scene4:
+      name: Button 4 entity
+      description: "Select the Scene 004 event entity for your device"
+      selector:
+        entity:
+          domain: event
+          integration: zwave_js
 
     pressb1:
       name: Button 1 - Single Press
@@ -99,85 +119,118 @@ blueprint:
 mode: restart
 max_exceeded: silent
 
-variables:
-  button_device: !input button
-
 trigger:
-  - platform: event
-    event_type: zwave_js_value_notification
-
-condition:
-  - condition: template
-    value_template: >
-      {{ trigger.event.data.device_id == button_device and
-         trigger.event.data.command_class_name == 'Central Scene' }}
+  - platform: state
+    entity_id: !input scene1
+    id: btn1
+  - platform: state
+    entity_id: !input scene2
+    id: btn2
+  - platform: state
+    entity_id: !input scene3
+    id: btn3
+  - platform: state
+    entity_id: !input scene4
+    id: btn4
 
 action:
   - choose:
     - conditions:
+        - condition: trigger
+          id: btn1
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed' }}"
       sequence: !input pressb1
     - conditions:
+        - condition: trigger
+          id: btn1
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyReleased' }}"
       sequence: !input releaseb1
     - conditions:
+        - condition: trigger
+          id: btn1
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed2x' }}"
       sequence: !input doubleb1
     - conditions:
+        - condition: trigger
+          id: btn1
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '001' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyHeldDown' }}"
       sequence: !input longb1
 
     - conditions:
+        - condition: trigger
+          id: btn2
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed' }}"
       sequence: !input pressb2
     - conditions:
+        - condition: trigger
+          id: btn2
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyReleased' }}"
       sequence: !input releaseb2
     - conditions:
+        - condition: trigger
+          id: btn2
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed2x' }}"
       sequence: !input doubleb2
     - conditions:
+        - condition: trigger
+          id: btn2
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '002' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyHeldDown' }}"
       sequence: !input longb2
 
     - conditions:
+        - condition: trigger
+          id: btn3
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed' }}"
       sequence: !input pressb3
     - conditions:
+        - condition: trigger
+          id: btn3
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyReleased' }}"
       sequence: !input releaseb3
     - conditions:
+        - condition: trigger
+          id: btn3
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed2x' }}"
       sequence: !input doubleb3
     - conditions:
+        - condition: trigger
+          id: btn3
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '003' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyHeldDown' }}"
       sequence: !input longb3
 
     - conditions:
+        - condition: trigger
+          id: btn4
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['0', 'KeyPressed'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed' }}"
       sequence: !input pressb4
     - conditions:
+        - condition: trigger
+          id: btn4
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['1', 'KeyReleased'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyReleased' }}"
       sequence: !input releaseb4
     - conditions:
+        - condition: trigger
+          id: btn4
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['3', 'KeyPressed2x'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyPressed2x' }}"
       sequence: !input doubleb4
     - conditions:
+        - condition: trigger
+          id: btn4
         - condition: template
-          value_template: "{{ trigger.event.data.property_key_name == '004' and trigger.event.data.value | string in ['2', 'KeyHeldDown'] }}"
+          value_template: "{{ trigger.to_state.attributes.event_type == 'KeyHeldDown' }}"
       sequence: !input longb4
